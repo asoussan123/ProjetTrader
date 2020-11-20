@@ -1,0 +1,92 @@
+﻿<Window x:Class="WPFTrader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFTrader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="1000" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Gestion de portefeuille" FontSize="50" FontFamily="Monotype Corsiva"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="5"></TextBlock>
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <TextBlock Height="30" Text="Les traders" Foreground="DarkRed" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <ListBox Name="lstTraders" SelectionChanged="lstTraders_SelectionChanged" BorderBrush="{x:Null}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding NumTrader}" Width="50"></TextBlock>
+                            <TextBlock Text="{Binding NomTrader}" Width="100"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2">
+            <TextBlock Height="30" Text="Les actions" Foreground="DarkRed" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <ListBox Name="lstActions" SelectionChanged="lstActions_SelectionChanged" BorderBrush="{x:Null}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding NumAction}" Width="50"></TextBlock>
+                            <TextBlock Text="{Binding NomAction}" Width="130"></TextBlock>
+                            <TextBlock Text="{Binding PrixAchat}" Width="70"></TextBlock>
+                            <TextBlock Text="{Binding Quantite}" Width="70"></TextBlock>
+                            <TextBlock Text="{Binding Total}" Width="110"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="4">
+            <TextBlock Height="30" Text="Total du portefeuille" Foreground="DarkRed" HorizontalAlignment="Center" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <Line Height="20"></Line>
+            <TextBox Name="txtTotalPortefeuille" Foreground="OrangeRed" HorizontalContentAlignment="Center" Width="200" IsEnabled="False"></TextBox>
+            <Line Height="20"></Line>
+            <Button Content="Vendre" Name="btnVendre" HorizontalAlignment="Center" Width="200" Click="btnVendre_Click"></Button>
+            <Line Height="20"></Line>
+            <TextBlock Height="30" Text="Quantité" Foreground="DarkRed" HorizontalAlignment="Center" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <Line Height="20"></Line>
+            <TextBox Name="txtQuantiteVendue" HorizontalContentAlignment="Center" Width="200"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="0">
+            <TextBlock Height="30" Text="Les actions non possédées" Foreground="DarkRed" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <ListBox Name="lstActionsNonPossedees" BorderBrush="{x:Null}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding NumAction}" Width="50"></TextBlock>
+                            <TextBlock Text="{Binding NomAction}" Width="130"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.Column="2">
+            <TextBlock Height="30" Text="Prix d'achat" Foreground="DarkRed" HorizontalAlignment="Center" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <Line Height="20"></Line>
+            <TextBox Name="txtPrixAchat" HorizontalContentAlignment="Center" Width="200"></TextBox>
+            <Line Height="20"></Line>
+            <TextBlock Height="30" Text="Quantité" Foreground="DarkRed" HorizontalAlignment="Center" FontSize="20" FontFamily="Monotype Corsiva"></TextBlock>
+            <Line Height="20"></Line>
+            <TextBox Name="txtQuantiteAchetee" HorizontalContentAlignment="Center" Width="200"></TextBox>
+            <Line Height="20"></Line>
+            <Button Content="Acheter" Name="btnAcheter" HorizontalAlignment="Center" Width="200" Click="btnAcheter_Click"></Button>
+        </StackPanel>
+        <Image Name="imgAction" Grid.Row="4" Grid.Column="4" Stretch="UniformToFill"></Image>
+    </Grid>
+</Window>
