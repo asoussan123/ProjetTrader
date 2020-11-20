@@ -22,6 +22,7 @@ namespace WPFTrader
     /// </summary>
     public partial class MainWindow : Window
     {
+        GstBdd gstBdd;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace WPFTrader
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            gstBdd = new GstBdd();
         }
 
         private void lstTraders_SelectionChanged(object sender, SelectionChangedEventArgs e)
