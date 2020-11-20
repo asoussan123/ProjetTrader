@@ -61,7 +61,7 @@ namespace GestionnaireBDD
             return lesActions;
         }
 
-        //DELETE FROM `acheter` WHERE `acheter`.`numAction` = 6 AND `acheter`.`numTrader` = 5 »
+        
         public void SupprimerActionAcheter(int numAction, int numTrader)
         {
             cmd = new MySqlCommand("delete from 'acheter' where 'acheter'.'numAction' = "+ numAction +" and 'acheter'.'numTrader' = "+ numTrader, cnx);
